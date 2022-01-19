@@ -61,29 +61,26 @@ function createRandomCircle() {
         height: ${size}px;
         left: ${x}px;
         top: ${y}px;
+        background: ${randomColor(1, 11)};
     `
-    let colors = ['linear-gradient(#e66465, #9198e5)', ' linear-gradient(127deg, rgba(0,255,0,.8), rgba(0,255,0,0) 70.71%)', 'linear-gradient(336deg, rgba(0,0,255,.8), rgba(0,0,255,0) 70.71%)', 'linear-gradient(45deg, red, blue)', 'linear-gradient(to right, blue, pink)', 'linear-gradient(#915C83, #EFDECD)', 'linear-gradient(#9890e3, #b1f4cf)', 'linear-gradient(#e9defa, #fbfcdb)', 'linear-gradient(#a88beb,f8ceec)']
-
-    for (let i = 0; i < score; i++) {
-        circle.addEventListener('mouseover', () => {
-            let color = randomColor();
-            circle.style.background = color;
-            circle.style.boxShadow = '0 0 2px #a27ac9'
-            circle.classList.remove('hover')
-        })
-        circle.addEventListener('mouseleave', () => {
-            circle.style.background = '#000'
-            circle.classList.remove('hover')
-        })
-
-    }
-    function randomColor() {
-        let index = Math.floor(Math.random() * colors.length);
-        return colors[index]
-    }
-
+    
     board.appendChild(circle)
 
+}
+
+function randomColor(min, max) {
+    let color = Math.floor(Math.random() * (max - min) + min)
+    if (color === 1) return color = 'linear-gradient(#e66465, #9198e5)'
+    if (color === 2) return color = 'linear-gradient(127deg, rgba(0,255,0,.8)'
+    if (color === 3) return color = 'linear-gradient(336deg, rgba(0,0,255,.8)'
+    if (color === 4) return color = 'linear-gradient(45deg, red, blue)'
+    if (color === 5) return color = 'rgba(0,0,255,0) 70.71%)'
+    if (color === 6) return color = 'linear-gradient(to top, blue, green)'
+    if (color === 7) return color = 'rgba(0,255,0,0) 70.71%)'
+    if (color === 8) return color = 'linear-gradient(#915C83, #EFDECD)'
+    if (color === 9) return color = 'linear-gradient(#9890e3, #b1f4cf)'
+    if (color === 10) return color = 'linear-gradient(#e9defa, #fbfcdb)'
+    if (color === 11) return color = 'linear-gradient(#a88beb,f8ceec)'
 }
 
 board.addEventListener('click', (e) => {
